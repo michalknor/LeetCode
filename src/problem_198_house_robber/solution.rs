@@ -14,9 +14,7 @@ impl Solution {
 
         let mut max_loot: Vec<i32> = vec![-1; numbers.len()];
         
-        while !stack.is_empty() {
-            let (index, loot) = stack.pop().unwrap();
-
+        while let Some((index, loot)) = stack.pop() {
             if loot <= max_loot[index] {
                 continue;
             }
@@ -38,8 +36,6 @@ impl Solution {
             }
         }
 
-        println!("{:?}", max_loot);
-
         if max_loot[numbers.len() - 1] > max_loot[numbers.len() - 2] {
             return max_loot[numbers.len() - 1]
         }
@@ -48,7 +44,7 @@ impl Solution {
     }
 }
 
-fn main() {
+pub fn tests() {
     assert_eq!(4, Solution::rob(vec![1,2,3,1]));
     assert_eq!(12, Solution::rob(vec![2,7,9,3,1]));
     assert_eq!(22, Solution::rob(vec![11,3,1,11,1]));
