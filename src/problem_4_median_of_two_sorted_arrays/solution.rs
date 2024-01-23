@@ -10,7 +10,8 @@ impl Solution {
             false => ((max_i + max_j) / 2, (max_i + max_j) / 2)
         };
 
-        let (mut current_count, mut current) = (0, 0);
+        let mut current_count = 0;
+        let mut current;
         let mut first_part = 0;
 
         loop {
